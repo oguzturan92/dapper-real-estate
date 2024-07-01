@@ -2,7 +2,7 @@
 # Proje Bilgileri
 - Dapper Orm kullanıldı
 - One to Many ve Many to Many ilişkili tablolar kullanılmış, ve bu tablolar üzerinde CRUD işlemleri uygulandı
-- Sayfalama (Paging) kullanıldı
+- Sayfalama (pagination) kullanıldı
 - Birden çok ve farklı, dinamik  parametrelerle çaışıldı
 - Folder structure uyumlu çalışıldı
 - Farklı özellikleride birçok sql sorgusu kullanıldı
