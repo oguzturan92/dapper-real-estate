@@ -1,0 +1,23 @@
+
+    <!-- NAV -->
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Royal<span>estate</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item @ViewBag.homeActive"><a asp-controller="Home" asp-action="Index" class="nav-link">Ana Sayfa</a></li>
+                    <li class="nav-item @ViewBag.propertyActive"><a asp-controller="Property" asp-action="Index" class="nav-link">İlanlar</a></li>
+                    <li class="nav-item @ViewBag.agentActive"><a asp-controller="Agent" asp-action="Index" class="nav-link">Ekip</a></li>
+                    <li class="nav-item @ViewBag.aboutActive"><a asp-controller="About" asp-action="Index" class="nav-link">Hakkımızda</a></li>
+                    <li class="nav-item @ViewBag.contactActive"><a asp-controller="Contact" asp-action="Index" class="nav-link">İletişim</a></li>
+                    <li class="nav-item"><a asp-area="Admin" asp-controller="Property" asp-action="PropertyList" class="nav-link">Admin</a></li>
+                    <li class="nav-item cta"><a asp-controller="Admin" asp-action="Index" class="nav-link ml-lg-2"><span class="icon-user"></span> Giriş Yap</a></li>
+                    <li class="nav-item cta cta-colored"><a href="contact.html" class="nav-link"><span class="icon-pencil"></span> Kayıt Ol</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>

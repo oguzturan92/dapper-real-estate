@@ -1,3 +1,18 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    Layout = "_Layout";
 }
+
+    @await Component.InvokeAsync("Slider")
+
+    @await Component.InvokeAsync("SearchForm")
+
+    @await Component.InvokeAsync("IconCard")
+    
+    @await Component.InvokeAsync("RecentPost")
+
+    @await Component.InvokeAsync("Last4Post")
+
+    @await Component.InvokeAsync("Statistic")
+
+    @await Component.InvokeAsync("Testimonial")

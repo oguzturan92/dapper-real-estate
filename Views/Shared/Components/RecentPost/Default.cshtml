@@ -1,0 +1,52 @@
+@model List<ResultHomePropertyDto>
+
+    <!-- ÖNE ÇIKAN POSTLAR -->
+    <section class="ftco-section ftco-properties">
+        <div class="container">
+            <div class="row justify-content-center mb-5 pb-3">
+                <div class="col-md-7 heading-section text-center ftco-animate">
+                    <span class="subheading">Özel İlanlar</span>
+                    <h2 class="mb-4">En Çok İlgi Görenler</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="properties-slider owl-carousel ftco-animate">
+
+                        @foreach (var item in Model)
+                        {
+                            <div class="item">
+                                <div class="properties">
+                                    <a asp-controller="Property" asp-action="Detail" asp-route-id="@item.PropertyId" class="img d-flex justify-content-center align-items-center" style="background-image: url(@(item.ImageName != null ? item.ImageName.Split()[0]:""));">
+                                        <div class="icon d-flex justify-content-center align-items-center">
+                                            <span class="icon-search2"></span>
+                                        </div>
+                                    </a>
+                                    <div class="text p-3" style="height: 125px;">
+                                        @if (item.PropertySell)
+                                        {
+                                            <span class="status sale">Satılık</span>
+                                        } else
+                                        {
+                                            <span class="status rent">Kiralık</span>
+                                        }
+                                        <div class="d-flex">
+                                            <div class="one">
+                                                <h3><a asp-controller="Property" asp-action="Detail" asp-route-id="@item.PropertyId">@item.PropertyTitle</a></h3>
+                                                <p>@item.PropertyTypeName | @item.LocationName</p>
+                                            </div>
+                                            <div class="two">
+                                                <span class="price">$@item.PropertyPrice.ToString().Insert(3,".")</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

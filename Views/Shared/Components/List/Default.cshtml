@@ -1,0 +1,63 @@
+@model List<ResultHomePropertyDto>
+
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row">
+                
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-4 ftco-animate">
+                        <div class="properties">
+                            <a asp-controller="Property" asp-action="Detail" asp-route-id="@item.PropertyId" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(@(item.ImageName != null ? item.ImageName.Split()[0]:""));">
+                                <div class="icon d-flex justify-content-center align-items-center">
+                                    <span class="icon-search2"></span>
+                                </div>
+                            </a>
+                            <div class="text p-3" style="min-height: 250px;">
+                                @if (item.PropertySell)
+                                {
+                                    <span class="status sale">Satılık</span>
+                                } else
+                                {
+                                    <span class="status rent">Kiralık</span>
+                                }
+                                <div class="d-flex">
+                                    <div class="one">
+                                        <h3><a asp-controller="Property" asp-action="Detail" asp-route-id="@item.PropertyId">@item.PropertyTitle</a></h3>
+                                        <p>@item.PropertyTypeName | @item.LocationName</p>
+                                    </div>
+                                    <div class="two">
+                                        <span class="price">$@item.PropertyPrice.ToString().Insert(3,".")</span>
+                                    </div>
+                                </div>
+                                <p>@item.PropertySubTitle</p>
+                                <hr>
+                                <p class="bottom-area d-flex">
+                                    <span><i class="flaticon-selection"></i> 250sqft</span>
+                                    <span class="ml-auto"><i class="flaticon-bathtub"></i> 3</span>
+                                    <span><i class="flaticon-bed"></i> 4</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+                
+            </div>
+
+            <div class="row mt-5">
+                <div class="col text-center">
+                    <div class="block-27">
+                        <ul>
+                            @* <li><a href="#">&lt;</a></li> *@
+                            @for (int i = 1; i <= ViewBag.totalPage; i++)
+                            {
+                                <li class="@(ViewBag.thisPage == i ? "active":"")"><a asp-controller="Property" asp-action="Index" asp-route-page="@i">@i</a></li>
+                            }
+                            @* <li><a href="#">&gt;</a></li> *@
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>

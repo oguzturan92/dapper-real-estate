@@ -1,1 +1,59 @@
-﻿
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Royal Estate</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="/Template/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/Template/css/animate.css">
+    
+    <link rel="stylesheet" href="/Template/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/Template/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/Template/css/magnific-popup.css">
+
+    <link rel="stylesheet" href="/Template/css/aos.css">
+
+    <link rel="stylesheet" href="/Template/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="/Template/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/Template/css/jquery.timepicker.css">
+
+    <link rel="stylesheet" href="/Template/css/flaticon.css">
+    <link rel="stylesheet" href="/Template/css/icomoon.css">
+    <link rel="stylesheet" href="/Template/css/style.css">
+    
+    <!-- sweetalert cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+    @await Component.InvokeAsync("NavTop")
+
+    @await Component.InvokeAsync("Nav")
+
+    @RenderBody()
+
+	<script>
+		if ("@TempData["text"]" != "")
+		{
+			Swal.fire({
+				position: "center",
+				icon: "@TempData["icon"]",
+				html: "@TempData["text"]",
+				showConfirmButton: false,
+				timer: 1500
+			});
+		}
+	</script>
+
+    @await Component.InvokeAsync("Newsletter")
+
+    @await Component.InvokeAsync("Footer")
+    
+    @await Component.InvokeAsync("DapperRealEstate.ViewComponents.Scripts")
+    
+</body>
+</html>

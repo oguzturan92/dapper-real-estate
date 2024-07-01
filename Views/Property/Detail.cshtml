@@ -1,0 +1,19 @@
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "_Layout";
+}
+
+    <div class="hero-wrap" style="background-image: url('/Template/images/bg_1.jpg');">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a asp-controller="Home" asp-action="Index">Ana sayfa</a></span> <span>DETAY</span></p>
+                    <h1 class="mb-3 bread">Detay</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @await Component.InvokeAsync("Detail", new { id = ViewBag.id})

@@ -1,0 +1,56 @@
+
+
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+            
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+                    <i style="margin-right: 10px;" class="fa-solid fa-house"></i>
+                    <span class="menu-title">Siteye Dön</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @ViewBag.propertyActive" asp-area="Admin" asp-controller="Property" asp-action="PropertyList">
+                    <i style="margin-right: 10px;" class="fa-solid fa-wand-magic-sparkles"></i>
+                    <span class="menu-title">İlan Yönetimi</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @ViewBag.agentActive" asp-area="Admin" asp-controller="Agent" asp-action="AgentList">
+                    <i style="margin-right: 10px;" class="fa-solid fa-people-group"></i>
+                    <span class="menu-title">Ekip</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @ViewBag.categoryActive" asp-area="Admin" asp-controller="Category" asp-action="CategoryList">
+                    <i style="margin-right: 10px;" class="fa-solid fa-layer-group"></i>
+                    <span class="menu-title">Kategori</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @ViewBag.locationActive" asp-area="Admin" asp-controller="Location" asp-action="LocationList">
+                    <i style="margin-right: 10px;" class="fa-solid fa-location-dot"></i>
+                    <span class="menu-title">Lokasyon</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @ViewBag.propertyTypeActive" asp-area="Admin" asp-controller="PropertyType" asp-action="PropertyTypeList">
+                    <i style="margin-right: 10px;" class="fa-solid fa-crown"></i>
+                    <span class="menu-title">Emlak Tipi</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @ViewBag.tagActive" asp-area="Admin" asp-controller="Tag" asp-action="TagList">
+                    <i style="margin-right: 10px;" class="fa-solid fa-tag"></i>
+                    <span class="menu-title">Etiket</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @ViewBag.testimonialActive" asp-area="Admin" asp-controller="Testimonial" asp-action="TestimonialList">
+                    <i style="margin-right: 10px;" class="fa-solid fa-comments"></i>
+                    <span class="menu-title">Misafir Yorumları</span>
+                </a>
+            </li>
+
+        </ul>
+    </nav>

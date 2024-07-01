@@ -1,0 +1,34 @@
+@model GetByIdTestimonialDto
+@{
+    ViewData["Title"] = "TestimonialUpdate";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Misafir Yorumu Güncelle</h4>
+            <form class="forms-sample" asp-area="Admin" asp-controller="Testimonial" asp-action="TestimonialUpdate" method="post">
+                <input type="hidden" asp-for="TestimonialId">
+                <div class="form-group">
+                    <label for="TestimonialFullname">Ad Soyad</label>
+                    <input type="text" class="form-control" asp-for="TestimonialFullname" id="TestimonialFullname" maxlength="50">
+                </div>
+                <div class="form-group">
+                    <label for="TestimonialDepartment">Departman</label>
+                    <input type="text" class="form-control" asp-for="TestimonialDepartment" id="TestimonialDepartment" maxlength="50">
+                </div>
+                <div class="form-group">
+                    <label for="TestimonialComment">Yorum</label>
+                    <input type="text" class="form-control" asp-for="TestimonialComment" id="TestimonialComment">
+                </div>
+                <div class="form-group">
+                    <label for="TestimonialImage">Resim Link</label>
+                    <input type="text" class="form-control" asp-for="TestimonialImage" id="TestimonialImage">
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Kaydet</button>
+                <a asp-area="Admin" asp-controller="Testimonial" asp-action="TestimonialList" class="btn btn-light">Geri</a>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+@model CreateTagDto
+@{
+    ViewData["Title"] = "TagCreate";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Etiket Ekle</h4>
+            <form class="forms-sample" asp-area="Admin" asp-controller="Tag" asp-action="TagCreate" method="post">
+                <div class="form-group">
+                    <label for="TagName">Ad</label>
+                    <input type="text" class="form-control" asp-for="TagName" id="TagName" maxlength="50">
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Kaydet</button>
+                <a asp-area="Admin" asp-controller="Tag" asp-action="TagList" class="btn btn-light">Geri</a>
+            </form>
+        </div>
+    </div>
+</div>

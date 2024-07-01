@@ -1,0 +1,22 @@
+@model GetByIdCategoryDto
+@{
+    ViewData["Title"] = "CategoryUpdate";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Kategori Güncelle</h4>
+            <form class="forms-sample" asp-area="Admin" asp-controller="Category" asp-action="CategoryUpdate" method="post">
+                <input type="hidden" asp-for="CategoryId">
+                <div class="form-group">
+                    <label for="CategoryName">Ad</label>
+                    <input type="text" class="form-control" asp-for="CategoryName" id="CategoryName" maxlength="50">
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Kaydet</button>
+                <a asp-area="Admin" asp-controller="Category" asp-action="CategoryList" class="btn btn-light">Geri</a>
+            </form>
+        </div>
+    </div>
+</div>

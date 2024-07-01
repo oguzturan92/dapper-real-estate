@@ -1,0 +1,29 @@
+@model CreateAgentDto
+@{
+    ViewData["Title"] = "AgentCreate";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Ekip Üyesi Ekle</h4>
+            <form class="forms-sample" asp-area="Admin" asp-controller="Agent" asp-action="AgentCreate" method="post">
+                <div class="form-group">
+                    <label for="AgentFullname">Ad</label>
+                    <input type="text" class="form-control" asp-for="AgentFullname" id="AgentFullname" maxlength="50">
+                </div>
+                <div class="form-group">
+                    <label for="AgentTitle">Alt Başlık</label>
+                    <input type="text" class="form-control" asp-for="AgentTitle" id="AgentTitle" maxlength="150">
+                </div>
+                <div class="form-group">
+                    <label for="AgentImage">Resim Link</label>
+                    <input type="text" class="form-control" asp-for="AgentImage" id="AgentImage">
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Kaydet</button>
+                <a asp-area="Admin" asp-controller="Agent" asp-action="AgentList" class="btn btn-light">Geri</a>
+            </form>
+        </div>
+    </div>
+</div>

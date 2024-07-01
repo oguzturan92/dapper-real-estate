@@ -1,0 +1,90 @@
+@model List<ResultLocationDto>
+
+    <!-- SEARCH FORM -->
+    <section class="ftco-search">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 search-wrap">
+                    <h2 class="heading h5 d-flex align-items-center pr-4"><span class="ion-ios-search mr-3"></span> Search Property</h2>
+                    <form asp-area="" asp-controller="Property" asp-action="Index" class="search-property">
+
+                        <div class="row">
+                            <div class="col-md align-items-end">
+                                <div class="form-group">
+                                    <label for="#">Kelime ile</label>
+                                    <div class="form-field">
+                                        <div class="icon"><span class="icon-pencil"></span></div>
+                                        <input type="text" class="form-control" name="q" placeholder="Kelime ile...">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md align-items-end">
+                                <div class="form-group">
+                                    <label for="#">Lokasyon ile</label>
+                                    <div class="form-field">
+                                        <div class="select-wrap">
+                                            <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                            <select name="location" id="" class="form-control">
+                                                <option value="">Lokasyon Seçiniz</option>
+                                                @foreach (var item in Model)
+                                                {
+                                                    <option value="@item.LocationId">@item.LocationName</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md align-items-end">
+                                <div class="form-group">
+                                    <label for="#">En Düşük Fiyat ile</label>
+                                    <div class="form-field">
+                                        <div class="select-wrap">
+                                            <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                            <select name="minPrice" id="" class="form-control">
+                                                <option value="">Fiyat Seçiniz</option>
+                                                @foreach (var item in ViewBag.minPriceSelect)
+                                                {
+                                                    <option value="@item">$@item.ToString().Insert(3,".")</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md align-items-end">
+                                <div class="form-group">
+                                    <label for="#">En Yüksek Fiyat ile</label>
+                                    <div class="form-field">
+                                        <div class="select-wrap">
+                                            <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                            <select name="maxPrice" id="" class="form-control">
+                                                <option value="">Fiyat Seçiniz</option>
+                                                @foreach (var item in ViewBag.maxPriceSelect)
+                                                {
+                                                    <option value="@item">$@item.ToString().Insert(3,".")</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md align-self-end">
+                                <div class="form-group">
+                                    <div class="form-field">
+                                        <input type="submit" value="Ara" class="form-control btn btn-primary">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>

@@ -1,0 +1,131 @@
+@model GetByIdPropertyDto
+@{
+    ViewData["Title"] = "PropertyUpdate";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">İlan Güncelle</h4>
+            <form class="forms-sample" asp-area="Admin" asp-controller="Property" asp-action="PropertyUpdate" method="post">
+                <input type="hidden" asp-for="PropertyId">
+                <input type="hidden" asp-for="PropertyDate">
+                <div class="form-group">
+                    <label for="PropertyTitle">Başlık</label>
+                    <input type="text" class="form-control" asp-for="PropertyTitle" id="PropertyTitle" required maxlength="50">
+                </div>
+                <div class="form-group">
+                    <label for="PropertySubTitle">Alt Başlık</label>
+                    <input type="text" class="form-control" asp-for="PropertySubTitle" id="PropertySubTitle" required maxlength="60">
+                </div>
+                <div class="form-group">
+                    <label for="PropertyDescription">Açıklama</label>
+                    <textarea asp-for="PropertyDescription" id="CkEditor" class="form-control" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="PropertyAddress">Adres</label>
+                    <input type="text" class="form-control" asp-for="PropertyAddress" id="PropertyAddress" required>
+                </div>
+                <div class="form-group">
+                    <label for="PropertyEmbed">Video Embed Link</label>
+                    <input type="text" class="form-control" asp-for="PropertyEmbed" id="PropertyEmbed" required>
+                </div>
+                <div class="form-group">
+                    <label for="PropertyPrice">Fiyat</label>
+                    <input type="number" class="form-control" asp-for="PropertyPrice" id="PropertyPrice" required minlength="4" maxlength="10">
+                </div>
+                <div class="form-group">
+                    <label for="PropertySlider">Slider Olarak Gösterilsin mi ?</label>
+                    <select class="form-control" asp-for="PropertySlider" id="PropertySlider" required>
+                        <option>Seçiniz</option>
+                        <option value="true">Evet, gösterilsin</option>
+                        <option value="false">Hayır, gösterilmesin</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="PropertySliderImage">Slider Resim Link</label>
+                    <input type="text" class="form-control" asp-for="PropertySliderImage" id="PropertySliderImage">
+                </div>
+                <div class="form-group">
+                    <label for="PropertyHome">Ana Sayfa Listesinde Olsun mu ?</label>
+                    <select class="form-control" asp-for="PropertyHome" id="PropertyHome" required>
+                        <option>Seçiniz</option>
+                        <option value="true">Evet, olsun</option>
+                        <option value="false">Hayır, olmasın</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="PropertySell">Satılık mı? Kiralık mı ?</label>
+                    <select class="form-control" asp-for="PropertySell" id="PropertySell" required>
+                        <option>Seçiniz</option>
+                        <option value="true">Satılık</option>
+                        <option value="false">Kiralık</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="AgentId">İlgilenecek Olan Emlak Danışanı</label>
+                    <select class="form-control" asp-for="AgentId" id="AgentId" required>
+                        <option>Seçiniz</option>
+                        @foreach (var item in ViewBag.agents)
+                        {
+                            <option value="@item.AgentId">@item.AgentFullname</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="CategoryId">Kategori</label>
+                    <select class="form-control" asp-for="CategoryId" id="CategoryId" required>
+                        <option>Seçiniz</option>
+                        @foreach (var item in ViewBag.categories)
+                        {
+                            <option value="@item.CategoryId">@item.CategoryName</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="LocationId">Lokasyon</label>
+                    <select class="form-control" asp-for="LocationId" id="LocationId" required>
+                        <option>Seçiniz</option>
+                        @foreach (var item in ViewBag.locations)
+                        {
+                            <option value="@item.LocationId">@item.LocationName</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="PropertyTypeId">Emlak Tipi</label>
+                    <select class="form-control" asp-for="PropertyTypeId" id="PropertyTypeId" required>
+                        <option>Seçiniz</option>
+                        @foreach (var item in ViewBag.propertyTypes)
+                        {
+                            <option value="@item.PropertyTypeId">@item.PropertyTypeName</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Etiket</label>
+                    @foreach (var item in ViewBag.tags)
+                    {
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" style="margin-left: 0px;" name="selectTags" value="@item.TagId" id="@item.TagId" 
+                            @(Model.SelectedTags.Any(i => i == item.TagId) ? "checked" : "")
+                            >
+                            <label class="form-check-label" for="@item.TagId">@item.TagName</label>
+                        </div>
+                    }
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Kaydet</button>
+                <a asp-area="Admin" asp-controller="Property" asp-action="PropertyList" class="btn btn-light">Geri</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace( 'CkEditor' );
+    </script>
+}

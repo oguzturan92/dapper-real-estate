@@ -1,0 +1,21 @@
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+}
+
+    <!-- BREADCRUMB -->
+    <div class="hero-wrap" style="background-image: url('/Template/images/bg_1.jpg');">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs"><span class="mr-2"><a asp-controller="Home" asp-action="Index">Ana Sayfa</a></span> <span>İLANLAR</span></p>
+                    <h1 class="mb-3 bread">İlanlar</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @await Component.InvokeAsync("SearchForm")
+
+	@await Component.InvokeAsync("List", new { q = ViewBag.q, location = ViewBag.location, minPrice = ViewBag.minPrice, maxPrice = ViewBag.maxPrice, page = ViewBag.page })

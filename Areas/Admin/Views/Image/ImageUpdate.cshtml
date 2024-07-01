@@ -1,0 +1,23 @@
+@model GetByIdImageDto
+@{
+    ViewData["Title"] = "ImageUpdate";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Resim Güncelle</h4>
+            <form class="forms-sample" asp-area="Admin" asp-controller="Image" asp-action="ImageUpdate" method="post">
+                <input type="hidden" asp-for="ImageId">
+                <input type="hidden" asp-for="PropertyId">
+                <div class="form-group">
+                    <label for="ImageName">Ad</label>
+                    <input type="text" class="form-control" asp-for="ImageName" id="ImageName" required>
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Kaydet</button>
+                <a asp-area="Admin" asp-controller="Image" asp-action="ImageList" asp-route-propertyId="@Model.PropertyId" class="btn btn-light">Geri</a>
+            </form>
+        </div>
+    </div>
+</div>

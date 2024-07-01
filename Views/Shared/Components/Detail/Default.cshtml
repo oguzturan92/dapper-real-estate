@@ -1,0 +1,141 @@
+@model GetDetailPropertyDto
+
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-8">
+                    <div class="row">
+
+                        <div class="col-md-12 ftco-animate">
+                            <div class="single-slider owl-carousel">
+                                @if (!string.IsNullOrEmpty(ViewBag.detailImage.ImageCount))
+                                {
+                                    for (int i = 0; i < Int32.Parse(ViewBag.detailImage.ImageCount); i++)
+                                    {
+                                        <div class="item">
+                                            <div class="properties-img" style="background-image: url(@ViewBag.detailImage.ImageName.Split()[i]);"></div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 Properties-single mt-4 mb-5 ftco-animate">
+                            <h2>@Model.PropertyTitle</h2>
+                            <p class="rate mb-4">
+                            <span class="loc"><a href="#"><i class="icon-map"></i> @Model.PropertyAddress / @Model.LocationName</a></span>
+                            @Html.Raw(Model.PropertyDescription)
+                        </div>
+
+                        <div class="col-md-12 properties-single ftco-animate mb-5 mt-4">
+                            <h3 class="mb-4">Video Tanıtımı</h3>
+                            <div class="block-16">
+                                <figure>
+                                    @if (!string.IsNullOrEmpty(ViewBag.detailImage.ImageCount))
+                                    {
+                                        <img style="width: 100%;" src="@(ViewBag.detailImage.ImageName != null ? ViewBag.detailImage.ImageName.Split()[0]:"")" alt="Image placeholder" class="img-fluid">
+                                    }
+                                    <a href="@Model.PropertyEmbed" class="play-button popup-vimeo"><span class="icon-play"></span></a>
+                                </figure>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12 properties-single ftco-animate mb-5 mt-5">
+                            <h4 class="mb-4">Son İlanlardan Birkaçı</h4>
+                            <div class="row">
+                                @{int x = 0;}
+                                @foreach (var item in ViewBag.last4Post)
+                                {
+                                    x++;
+                                    <div class="col-md-6 ftco-animate">
+                                        <div class="properties">
+                                            <a asp-controller="Property" asp-action="Detail" asp-route-id="@item.PropertyId" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(@(item.ImageName != null ? item.ImageName.Split()[0]:""));">
+                                                <div class="icon d-flex justify-content-center align-items-center">
+                                                    <span class="icon-search2"></span>
+                                                </div>
+                                            </a>
+                                            <div class="text p-3" style="min-height: 250px;">
+                                                @if (item.PropertySell)
+                                                {
+                                                    <span class="status sale">Satılık</span>
+                                                } else
+                                                {
+                                                    <span class="status rent">Kiralık</span>
+                                                }
+                                                <div class="d-flex">
+                                                    <div class="one">
+                                                        <h3><a asp-controller="Property" asp-action="Detail" asp-route-id="@item.PropertyId">@item.PropertyTitle</a></h3>
+                                                        <p>@item.PropertyTypeName</p>
+                                                    </div>
+                                                    <div class="two">
+                                                        <span class="price">$@item.PropertyPrice.ToString().Insert(3,".")</span>
+                                                    </div>
+                                                </div>
+                                                <p>@item.PropertySubTitle | @item.LocationName</p>
+                                                <hr>
+                                                <p class="bottom-area d-flex">
+                                                    <span><i class="flaticon-selection"></i> 250sqft</span>
+                                                    <span class="ml-auto"><i class="flaticon-bathtub"></i> 3</span>
+                                                    <span><i class="flaticon-bed"></i> 4</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    if (x == 2)
+                                    {
+                                        break;
+                                    }
+                                }
+                                
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 sidebar ftco-animate">
+
+                    <div class="sidebar-box">
+                        <form action="#" class="search-form">
+                            <div class="form-group">
+                                <span class="icon fa fa-search"></span>
+                                <input type="text" class="form-control" placeholder="Arama...">
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="sidebar-box ftco-animate">
+                        <div class="categories">
+                            <h3>Kategoriler</h3>
+                            @foreach (var item in ViewBag.categoryAndCount)
+                             {
+                                <li><a href="#">@item.CategoryName <span>(@item.CategoryCount)</span></a></li>
+                             }
+                        </div>
+                    </div>
+
+                    <div class="sidebar-box ftco-animate">
+                        <h3>Etiketler</h3>
+                        <div class="tagcloud">
+                            @if (!string.IsNullOrEmpty(Model.TagCount))
+                            {
+                                for (int i = 0; i < Int32.Parse(Model.TagCount); i++)
+                                {
+                                    <a href="#" class="tag-cloud-link">@Model.TagNames.Split()[i]</a>
+                                }
+                            }
+                        </div>
+                    </div>
+
+                    <div class="sidebar-box ftco-animate">
+                        <h3>Bahsedelim...</h3>
+                        <p>@Model.PropertySubTitle</p>
+                    </div>
+
+                </div>
+            
+            </div>
+        </div>
+    </section>
