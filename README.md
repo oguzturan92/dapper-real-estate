@@ -25,3 +25,10 @@
 
 # Database Diagram
 ![6](https://github.com/oguzturan92/dapper-real-estate/assets/157590022/fba71ab5-605d-4716-8e95-9ea86d47f1db)
+
+# PropertyService metotları ve örnek bir sql sorgusu - Detail
+![Ekran görüntüsü 2024-07-02 000346](https://github.com/oguzturan92/dapper-real-estate/assets/157590022/1f6edc07-26f0-4052-93b4-b615ebd00379)
+
+# Left Image : En düşük ve en yüksek fiyatın alınması ve bunlara uygun olarak Search formda dinamil fiyatlandırma
+# Right Image : Search formdan gelen değerlerin işlenmesi ve sayfalama çalışması
+![Ekran görüntüsü 2024-07-02 000509](https://github.com/oguzturan92/dapper-real-estate/assets/157590022/3b2f9d7f-cadd-4f61-b845-c5903c2663b1)
